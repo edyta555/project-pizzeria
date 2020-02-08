@@ -44,7 +44,10 @@ dataSource.products = {
       '<img class="toppings-redPeppers" src="images/pizza/red-peppers.svg">',
       '<img class="toppings-greenPeppers" src="images/pizza/green-peppers.svg">',
       '<img class="toppings-mushrooms" src="images/pizza/mushrooms.svg">',
+      '<img class="toppings-corn" src="images/pizza/corn.svg">',
+      '<img class="toppings-pineapple" src="images/pizza/pineapple.svg">',
       '<img class="toppings-basil" src="images/pizza/basil.svg">',
+      '<img class="toppings-bacon" src="images/pizza/bacon.svg">',
     ],
     params: {
       sauce: {
@@ -63,8 +66,11 @@ dataSource.products = {
           redPeppers: {label: 'Red peppers', price: 2, default: true},
           greenPeppers: {label: 'Green peppers', price: 2, default: true},
           mushrooms: {label: 'Mushrooms', price: 2, default: true},
+          corn: {label: 'Corn', price: 2},
+          pineapple: {label: 'Pineapple', price: 2},
           basil: {label: 'Fresh basil', price: 2, default: true},
           salami: {label: 'Salami', price: 3},
+          bacon: {label: 'Bacon', price: 3},
         },
       },
       crust: {
@@ -103,7 +109,7 @@ dataSource.products = {
           cucumber: {label: 'Cucumber', price: 1, default: true},
           tomatoes: {label: 'Tomatoes', price: 1, default: true},
           olives: {label: 'Olives', price: 1, default: true},
-          feta: {label: 'Feta cheese', price: 1},
+          feta: {label: 'Feta cheese', price: 1, default: true},
           cheese: {label: 'Cheese', price: 1},
           herbs: {label: 'Fresh herbs', price: 1, default: true},
           pepper: {label: 'Black pepper', price: 1},
