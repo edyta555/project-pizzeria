@@ -30,6 +30,8 @@
         ]
     },
     "globals": {
-        "Handlebars": false
+        "Handlebars": false,
+        "flatpickr": false,
+        "rangeSlider": false
     }
 }
