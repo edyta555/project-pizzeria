@@ -24,7 +24,6 @@ class Cart{
     thisCart.dom.address = thisCart.dom.wrapper.querySelector(select.cart.address);
     /* key array of the select.cart object */
     thisCart.renderTotalsKeys = ['totalNumber', 'totalPrice', 'subtotalPrice', 'deliveryFee'];
-
     for(let key of thisCart.renderTotalsKeys){
       thisCart.dom[key] = thisCart.dom.wrapper.querySelectorAll(select.cart[key]);
     }
@@ -73,12 +72,20 @@ class Cart{
     /* total cost of all ordered products */
     thisCart.subtotalPrice = 0;
 
+    if(thisCart.totalNumber == 0){
+      thisCart.deliveryFee = 0;
+    }
+    else {
+      thisCart.deliveryFee = settings.cart.defaultDeliveryFee;
+    }
+
     for(let product of thisCart.products){
       thisCart.totalNumber += product.amount;
       thisCart.subtotalPrice += product.price;
     }
     /* total cost of the order (with delivery cost) */
     thisCart.totalPrice = thisCart.subtotalPrice + thisCart.deliveryFee;
+    console.log(thisCart.deliveryFee);
     /* displaying current amounts in the basket */
     for(let key of thisCart.renderTotalsKeys){
       for(let elem of thisCart.dom[key]){
@@ -98,7 +105,7 @@ class Cart{
   sendOrder(){
     const thisCart = this;
     const url = settings.db.url + '/' + settings.db.order;
-
+    console.log('2', thisCart.deliveryFee);
     const payload = {
       phone: thisCart.dom.phone.value,
       address: thisCart.dom.address.value,

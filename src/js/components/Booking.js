@@ -1,4 +1,5 @@
-import {templates, select} from '../settings.js';
+import {templates, select, settings} from '../settings.js';
+import utils from '../utils.js';
 import AmountWidget from './AmountWidget.js';
 import DatePicker from './DatePicker.js';
 import HourPicker from './HourPicker.js';
@@ -9,6 +10,43 @@ class Booking{
 
     thisBooking.render(wrapper);
     thisBooking.initWidgets();
+    thisBooking.getData();
+  }
+
+  getData(){
+    const thisBooking = this;
+    const startDateParam = settings.db.dateStartParamKey + '=' + utils.dateToStr(thisBooking.datePicker.minDate);
+    const endDateParam = settings.db.dateEndParamKey + '=' + utils.dateToStr(thisBooking.datePicker.maxDate);
+
+    const params = {
+      booking: [
+        startDateParam,
+        endDateParam,
+      ],
+      eventsCurrent: [
+        settings.db.notRepeatParam,
+        startDateParam,
+        endDateParam,
+      ],
+      eventsRepeat: [
+        settings.db.repeatParam,
+        endDateParam,
+      ],
+    };
+
+    const urls = {
+      booking: settings.db.url + '/' + settings.db.booking + '?' + params.booking.join('&'),
+      eventsCurrent: settings.db.url + '/' + settings.db.event + '?' + params.eventsCurrent.join('&'),
+      eventsRepeat: settings.db.url + '/' + settings.db.event + '?' + params.eventsRepeat.join('&'),
+    };
+
+    fetch(urls.booking)
+      .then(function(bookingsResponse){
+        return bookingsResponse.json();
+      })
+      .then(function(bookings){
+        console.log(bookings);
+      });
   }
 
   render(element){
