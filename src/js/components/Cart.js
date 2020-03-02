@@ -72,13 +72,6 @@ class Cart{
     /* total cost of all ordered products */
     thisCart.subtotalPrice = 0;
 
-    if(thisCart.totalNumber == 0){
-      thisCart.deliveryFee = 0;
-    }
-    else {
-      thisCart.deliveryFee = settings.cart.defaultDeliveryFee;
-    }
-
     for(let product of thisCart.products){
       thisCart.totalNumber += product.amount;
       thisCart.subtotalPrice += product.price;
