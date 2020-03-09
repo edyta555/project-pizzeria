@@ -37,18 +37,18 @@ class AmountWidget extends BaseWidget{
   initActions(){
     const thisWidget = this;
     thisWidget.dom.input.addEventListener('change', function(){
-      thisWidget.value(thisWidget.dom.input.value);
+      thisWidget.setValue(thisWidget.dom.input.value);
     });
 
     /*reduce the number of products by clicking on the minus*/
-    thisWidget.dom.linkDecrease.addEventListener('click', function(){
+    thisWidget.dom.linkDecrease.addEventListener('click', function(event){
       event.preventDefault();
-      thisWidget.setValue(thisWidget.value - 1);
+      thisWidget.setValue(Number(thisWidget.dom.input.value) - 1);
     });
     /*increase the number of products by clicking on the minus*/
-    thisWidget.dom.linkIncrease.addEventListener('click', function(){
+    thisWidget.dom.linkIncrease.addEventListener('click', function(event){
       event.preventDefault();
-      thisWidget.setValue(thisWidget.value + 1);
+      thisWidget.setValue(Number(thisWidget.dom.input.value) + 1);
     });
   }
 }
